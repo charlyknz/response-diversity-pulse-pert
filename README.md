@@ -1,5 +1,5 @@
 # response-diversity-pulse-pert
-R code for "Species interactions determine the importance of response diversity for community stability to pulse disturbances"
+R code for the simulations in "Species interactions determine the importance of response diversity for community stability to pulse disturbances"
   
 ## Running title: Response diversity under pulse disturbance 
 
