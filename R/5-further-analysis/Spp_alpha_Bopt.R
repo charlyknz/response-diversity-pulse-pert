@@ -91,7 +91,8 @@ ggplot(all_spp_info, aes(y = mean_competitiveness, x = b_opt_i ))+
 #ggsave(plot = last_plot(), file = here('output/Appendix_FigS_competitiveness_topt.pdf'), width = 7, height = 8)
 
 #### now merge with AUCs and igr to see which species benefit and suffer ####
-AUC_info <- left_join(all_spp_info, species_measures)
+AUC_info <- left_join(all_spp_info, species_measures) %>% 
+  filter(alpha_ij_sd %in% c(0,0.25,0.5))
 
 pA<-ggplot(AUC_info, aes(x = mean_competitiveness, y = species_RR_AUC ))+
   geom_point(alpha = 0.3)+
@@ -126,9 +127,26 @@ pD<-ggplot(AUC_info, aes(x = b_opt_i, y = igr_pert_effect ))+
 pD
 
 cowplot::plot_grid(pA, pB, ncol = 2, labels = c('(a)', '(b)', '(c)', '(d)'))
-ggsave(plot = last_plot(), file = here('output/Appendix_FigS_competitiveness_topt_realisedResp.png'), width = 14, height = 8)
+ggsave(plot = last_plot(), file = here('output/Appendix_FigS_competitiveness_topt_realisedResp.png'), width = 8, height = 3)
 
 cowplot::plot_grid(pC, pD, ncol = 2, labels = c('(a)', '(b)', '(c)', '(d)'))
-ggsave(plot = last_plot(), file = here('output/Appendix_FigS_competitiveness_topt_igrEffect.png'), width = 14, height = 8)
+ggsave(plot = last_plot(), file = here('output/Appendix_FigS_competitiveness_topt_igrEffect.png'), width = 8, height = 3)
+
+pE<-ggplot(AUC_info, aes(x = species_RR_AUC, y = igr_pert_effect ))+
+  geom_point(alpha = 0.3)+
+  geom_hline(yintercept = 0)+
+  labs(x ='Species realised responses', y = 'Species fundamental responses')+
+  facet_wrap(~alpha_ij_sd, scales = "free_x")+
+  theme_bw()
+pE
+
+pE<-ggplot(AUC_info, aes(x = species_RR_AUC, y = igr_pert_effect ))+
+  geom_point(alpha = 0.3)+
+  geom_hline(yintercept = 0)+
+  labs(x ='Species realised responses', y = 'Species fundamental responses')+
+  facet_wrap(~alpha_ij_sd, scales = "free_x")+
+  theme_bw()
+pE
+ggsave(plot = last_plot(), file = here("output/AppendixBox1_realised_igr.png"), width = 8, height = 4)
 
 
