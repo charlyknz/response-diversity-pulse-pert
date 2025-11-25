@@ -4,7 +4,7 @@ R code for the simulations in "Species interactions determine the importance of 
 ## Running title: Response diversity under pulse disturbance 
 
 ### Author list:
-Charlotte Kunze: 0000-0002-1130-7417, charlotte.kunze@gmx.de *. 
+Charlotte Kunze: 0000-0002-1130-7417, charlotte.kunze@idiv.de *. 
 
 Owen L. Petchey: 0000-0002-7724-1633, owen.petchey@uzh.ch. 
 
