@@ -60,6 +60,7 @@ other_pars$interactions <- "only_comp"
 
 ## data folder
 dir.create(here("data", pack))
+dir.create(here("output"))
 
 saveRDS(other_pars, here("data", pack, "other_pars.RDS"))
 
@@ -75,16 +76,13 @@ source(here("R/2-run/run_experiment.r"))
 # Calculate species and community level measures (e.g. stability and diversity)
 source(here("R/3-analyse/get_stab_and_respdiv.R"))
 
-## Getting the explanatory powers
-source(here("R/3-analyse/calcs_on_data.R"))
-
-
 ## plotting and making html report
 source(here("R", "4-visualisations", "quick-graph-main-result.r"))
 #quarto::quarto_render(input = here("reports", "main-report.qmd"),
 #                      output_file = paste0("main-report-", pack, ".html"))
 
-#source(here('R/5-from-charly/plots_simulations.R'))
+#Run the next code manually 
+source(here('R/5-further-analysis/plots_simulations.R'))
 ###############################################################################
 ## Here is how to add new diversity measures. Its possibly still not so clear, so let me know if something seems amiss or unclear. ----
 ## 1. Add to the calculation in the file `R/3-analyse/get_stab_and_respdiv.R`.

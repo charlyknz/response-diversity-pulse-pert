@@ -132,14 +132,8 @@ ggsave(plot = last_plot(), file = here('output/Appendix_FigS_competitiveness_top
 cowplot::plot_grid(pC, pD, ncol = 2, labels = c('(a)', '(b)', '(c)', '(d)'))
 ggsave(plot = last_plot(), file = here('output/Appendix_FigS_competitiveness_topt_igrEffect.png'), width = 8, height = 3)
 
-pE<-ggplot(AUC_info, aes(x = species_RR_AUC, y = igr_pert_effect ))+
-  geom_point(alpha = 0.3)+
-  geom_hline(yintercept = 0)+
-  labs(x ='Species realised responses', y = 'Species fundamental responses')+
-  facet_wrap(~alpha_ij_sd, scales = "free_x")+
-  theme_bw()
-pE
-
+# Now look at the relationship between realised and fundamental responses 
+# creates Appendix 1 Box 1 Figures
 pE<-ggplot(AUC_info, aes(x = species_RR_AUC, y = igr_pert_effect ))+
   geom_point(alpha = 0.3)+
   geom_hline(yintercept = 0)+
